@@ -7,6 +7,7 @@ C
       CHARACTER(LEN=*), PARAMETER  :: FMT2 = "(A)"
       INTEGER i
 
+      WRITE(*,FMT1) 'const INTEGER_BIT_SIZE  = ', BIT_SIZE(i)
 
       WRITE(*,FMT1) 'const MPI_COMM_SELF  = int32(', MPI_COMM_SELF , ')'
       WRITE(*,FMT1) 'const MPI_COMM_WORLD = int32(', MPI_COMM_WORLD, ')'

@@ -18,6 +18,6 @@ script:
   - echo "--- Install MPI Wrappers ---"
   - julia -e 'Pkg.init(); Pkg.clone(pwd()); Pkg.build("MPI")'
   - echo "--- CTest Log ---"
-  - cat /users/travis/.julia/v*/MPI/deps/build/Testing/Temporary/LastTest.log
+  - julia -e 'run(`cat $(Pkg.dir())/MPI/deps/build/Testing/Temporary/LastTest.log`)'
   - echo "--- compile-time.jl ----"
-  - cat /users/travis/.julia/v*/MPI/src/compile-time.jl
+  - julia -e 'run(`cat $(Pkg.dir())/MPI/src/compile-time.jl`)'
