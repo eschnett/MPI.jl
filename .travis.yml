@@ -15,5 +15,9 @@ before_install:
   - sudo apt-get install -qq cmake git gfortran libopenmpi-dev openmpi-bin
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
 script:
+  - echo "--- Install MPI Wrappers ---"
   - julia -e 'Pkg.init(); Pkg.clone(pwd()); Pkg.build("MPI")'
-  - cat `julia -e 'print(Pkg.dir())'`/MPI/deps/build/Testing/Temporary/LastTest.log
+  - echo "--- CTest Log ---"
+  - cat /users/travis/.julia/v*/MPI/deps/build/Testing/Temporary/LastTest.log
+  - echo "--- compile-time.jl ----"
+  - cat /users/travis/.julia/v*/MPI/src/compile-time.jl
